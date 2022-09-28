@@ -35,6 +35,21 @@
                                 </div>
                             </div>
                             <div class="form-outline mb-4">
+                                <label class="form-label" for="emailId">Email ID</label>
+                                <input type="email" id="emailId" class="form-control form-control-lg" formControlName="emailId"/>
+                                <div *ngIf="profileForm.controls['emailId'].invalid && profileForm.controls['emailId'].touched" class="alert alert-danger">
+                                    Please enter the correct required value.
+                                </div>
+                            </div>
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form3Example3">Password</label>
+                                <input type="password" id="password" class="form-control form-control-lg" formControlName="password" placeholder="Enter the password"/>
+                                <div *ngIf="profileForm.controls['password'].invalid && profileForm.controls['password'].touched" class="alert alert-danger">
+                                    Please enter the correct password.
+                                </div>
+                            </div>
+                            <div class="form-outline mb-4">
                                 <label class="form-label" for="Address">Address</label>
                                 <input formControlName="address" type="text" id="Address" class="form-control form-control-lg" />
                                 <div *ngIf="profileForm.controls['address'].invalid && profileForm.controls['address'].touched" class="alert alert-danger">
@@ -91,28 +106,6 @@
                                 <input type="date" id="DOB" class="form-control form-control-lg" formControlName="dob"/>
                                 <div *ngIf="profileForm.controls['dob'].invalid && profileForm.controls['dob'].touched" class="alert alert-danger">
                                     Please enter the correct required value.
-                                </div>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="Pincode">Pincode</label>
-                                <input type="text" id="Pincode" class="form-control form-control-lg" formControlName="pincode"/>
-                                <div *ngIf="profileForm.controls['pincode'].invalid && profileForm.controls['pincode'].touched" class="alert alert-danger">
-                                    Please enter the correct required value.
-                                </div>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="emailId">Email ID</label>
-                                <input type="email" id="emailId" class="form-control form-control-lg" formControlName="emailId"/>
-                                <div *ngIf="profileForm.controls['emailId'].invalid && profileForm.controls['emailId'].touched" class="alert alert-danger">
-                                    Please enter the correct required value.
-                                </div>
-                            </div>
-                            <!-- Password input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form3Example3">Password</label>
-                                <input type="password" id="password" class="form-control form-control-lg" formControlName="password" placeholder="Enter the password"/>
-                                <div *ngIf="profileForm.controls['password'].invalid && profileForm.controls['password'].touched" class="alert alert-danger">
-                                    Please enter the correct password.
                                 </div>
                             </div>
                             <div class="form-check">
