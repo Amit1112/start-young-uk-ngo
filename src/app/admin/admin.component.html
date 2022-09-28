@@ -1,1 +1,33 @@
-<p>admin works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-2">
+            <nav class ="navbar bg-light shadow">
+                <ul class ="nav navbar-nav">
+                    <li class ="nav-item">
+                        <a class ="nav-link mx-3" routerLink="manage-users" [routerLinkActive]="'active'"> Manage Users </a>
+                    </li>
+                    <li class ="nav-item">
+                        <a class ="nav-link mx-3" routerLink="manage-children" [routerLinkActive]="'active'"> Manage Children </a>
+                    </li>
+                    <li class ="nav-item">
+                        <a class ="nav-link mx-3" routerLink="manage-school" [routerLinkActive]="'active'"> Manage School </a>
+                    </li>
+                    <li class ="nav-item">
+                        <a class ="nav-link mx-3" routerLink="dashboard-management" [routerLinkActive]="'active'"> Dashboard Management </a>
+                    </li>
+                    <li class ="nav-item">
+                        <a class ="nav-link mx-3" routerLink="buddy-mapping" [routerLinkActive]="'active'"> Buddy/Sponsorship Mapping </a>
+                    </li>
+                    <li class ="nav-item">
+                        <a class ="nav-link mx-3" routerLink="review" [routerLinkActive]="'active'"> Review Letters </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-10">
+            <div class="container">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

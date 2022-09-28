@@ -1,0 +1,14 @@
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item" *ngFor="let review of reviews;let index = index;">
+      <h2 class="accordion-header" [id]="'headingOne'+index">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne'+index" aria-expanded="true" [attr.aria-controls]="'#collapseOne'+index">
+          Letter From: {{review.letterFrom.name}}, Letter To: {{review.letterTo.name}} {{'#' + index}}
+        </button>
+      </h2>
+      <div [id]="'collapseOne'+index" class="accordion-collapse collapse show" [attr.aria-labelledby]="'headingOne'+index" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>Message:</strong> {{review.message}}
+        </div>
+      </div>
+    </div>
+</div>
