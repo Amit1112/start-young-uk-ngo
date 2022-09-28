@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import { LoginComponent } from '../login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,11 @@ export class DashboardService {
       isDashBoard: true
     },
     {
+      name: 'Sign In',
+      id: 'signin',
+      isModal: true
+    },
+    {
       name: 'Sign Up',
       id: 'signUp',
       isDashBoard: false
@@ -42,7 +49,9 @@ export class DashboardService {
     }
   ];
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private modalService: NgbModal) { }
 
   getAboutUsInfo(): Observable<any> {
     return this.http.get<any>(this.baseApiUrl + '/login');
@@ -50,5 +59,9 @@ export class DashboardService {
 
   getMenuItemLinks() {
     return this.menuItemsLinks;
+  }
+
+  openLoginModal() {
+    this.modalService.open(LoginComponent);
   }
 }

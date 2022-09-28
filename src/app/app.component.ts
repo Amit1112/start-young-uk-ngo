@@ -36,4 +36,8 @@ export class AppComponent implements OnInit {
       console.log(data, 'succss');
     })
   }
+
+  openLoginModal() {
+    this.dashboardService.openLoginModal();
+  }
 }

@@ -66,10 +66,9 @@
                                 <div class="col-md-6 mb-4">
                                     <label class="form-label" for="state">State</label>
                                     <select class="form-select select" formControlName="state" name="state">
-                                        <option value="1">State</option>
-                                        <option value="2">England</option>
-                                        <option value="3">Scotland</option>
-                                        <option value="4">Wales</option>
+                                        <option value="England">England</option>
+                                        <option value="Scotland">Scotland</option>
+                                        <option value="Wales">Wales</option>
                                     </select>
                                     <div *ngIf="profileForm.controls['state'].invalid && profileForm.controls['state'].touched" class="alert alert-danger">
                                         Please enter the correct required value.
@@ -78,10 +77,9 @@
                                 <div class="col-md-6 mb-4">
                                     <label class="form-label" for="city">City</label>
                                     <select class="form-select select" formControlName="city">
-                                        <option value="1">City</option>
-                                        <option value="2">Leicester</option>
-                                        <option value="3">Worcester</option>
-                                        <option value="4">York</option>
+                                        <option value="Leicester">Leicester</option>
+                                        <option value="Worcester">Worcester</option>
+                                        <option value="York">York</option>
                                     </select>
                                     <div *ngIf="profileForm.controls['city'].invalid && profileForm.controls['city'].touched" class="alert alert-danger">
                                         Please enter the correct required value.
@@ -111,7 +109,7 @@
                             </div>
                             <div class="d-flex justify-content-end pt-3">
                                 <button type="button" class="btn btn-light btn-lg" (click)="resetForm()">Reset all</button>
-                                <button type="button" class="btn btn-warning btn-lg ms-2"  [disabled]="!profileForm.valid"(click)="submitForm();">Submit form</button>
+                                <button type="button" class="btn btn-warning btn-lg ms-2"  [disabled]="!profileForm.valid" (click)="submitForm();">Submit form</button>
                             </div>
                             </div>
                         </div>
