@@ -1,0 +1,14 @@
+.brand-logo {
+    transition: height 0.35s, background-color 0.35s, font-size 0.35s;
+    .brand-image {
+        height: 55px;
+    }
+}
+.contact-map {
+    display: flex;
+    .map-container {
+        height: 500px;
+        width: 100%;
+        position: relative;
+    }
+}
