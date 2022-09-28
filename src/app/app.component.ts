@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
+import { AppConstant } from './app.constant';
 import { DashboardService } from './services/dashboard.service';
+import { IMenuItemLink } from './types/app.interface';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,8 @@ import { DashboardService } from './services/dashboard.service';
 export class AppComponent implements OnInit {
   title = 'start-young-uk';
   aboutInfo: string = '';
+  brandImageUrl = AppConstant.brandImageUrl;
+  menuItemLinks: IMenuItemLink[] = [];
 
   constructor(
     private titleService: Title,
@@ -27,8 +31,9 @@ export class AppComponent implements OnInit {
     //   { name: 'robots', content: 'index, follow' },
     //   { name: 'author', content: 'Start Young UK' },
     // ]);
-    // this.dashboardService.getAboutUsInfo().subscribe((data: any) => {
-    //   this.aboutInfo = data.text;
-    // });
+    this.menuItemLinks = this.dashboardService.getMenuItemLinks();
+    this.dashboardService.getAboutUsInfo().subscribe((data) => {
+      console.log(data, 'succss');
+    })
   }
 }
