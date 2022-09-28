@@ -3,7 +3,7 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <form>
+    <form class="" [formGroup]="loginForm" novalidate>
         <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
           <p class="lead fw-normal mb-0 me-3">Sign in with</p>
           <button type="button" class="btn btn-primary btn-floating mx-1">
@@ -23,15 +23,19 @@
         <!-- Email input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="form3Example3">Email address</label>
-          <input type="email" id="form3Example3" class="form-control form-control-lg"
-            placeholder="Enter a valid email address" />
+            <input type="email" id="emailId" class="form-control form-control-lg" formControlName="emailId" placeholder="Enter a valid email address"/>
+            <div *ngIf="loginForm.controls['emailId'].invalid && loginForm.controls['emailId'].touched" class="alert alert-danger">
+                Please enter the correct required value.
+            </div>
         </div>
 
         <!-- Password input -->
-        <div class="form-outline mb-3">
-          <label class="form-label" for="form3Example4">Password</label>
-          <input type="password" id="form3Example4" class="form-control form-control-lg"
-            placeholder="Enter password" />
+        <div class="form-outline mb-4">
+          <label class="form-label" for="form3Example3">Password</label>
+            <input type="password" id="password" class="form-control form-control-lg" formControlName="password" placeholder="Enter the password"/>
+            <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="alert alert-danger">
+                Please enter the correct password.
+            </div>
         </div>
 
         <div class="d-flex justify-content-between align-items-center">
