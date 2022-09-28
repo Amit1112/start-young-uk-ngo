@@ -55,3 +55,5 @@ import 'zone.js';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+ import "bootstrap/dist/js/bootstrap.bundle.min.js";
