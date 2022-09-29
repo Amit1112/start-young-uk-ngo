@@ -8,6 +8,10 @@
       <div [id]="'collapseOne'+index" class="accordion-collapse collapse show" [attr.aria-labelledby]="'headingOne'+index" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <strong>Message:</strong> {{review.message}}
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-success btn-sm">Select</button>
+            <button type="button" class="btn btn-danger btn-sm">Reject</button>
+          </div>
         </div>
       </div>
     </div>

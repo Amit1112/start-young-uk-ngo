@@ -6,13 +6,15 @@ import { AdminComponent } from './admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReviewCommentComponent } from './review-comment/review-comment.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { ManageChildrenComponent } from './manage-children/manage-children.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
     ReviewCommentComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
+    ManageChildrenComponent
   ],
   imports: [
     CommonModule,
