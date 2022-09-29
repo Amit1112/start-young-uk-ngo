@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "https://codefest-spring-boot-backend.azurewebsites.net",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "info"
+    }
+}

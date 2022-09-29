@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DashboardService } from '../services/dashboard.service';
 import { LoginService } from '../services/login.service';
 
 @Component({
@@ -21,6 +23,8 @@ export class RegistrationComponent implements OnInit {
     'Lincoln',
     'Worcester', 'York', 'Wells', 'Wakefield', 'Cambridge', 'Chester', 'Derby'];
 
+  EMAIL_REGEX = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+
   profileForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
@@ -29,24 +33,31 @@ export class RegistrationComponent implements OnInit {
     city: new FormControl('', Validators.required),
     state: new FormControl('', Validators.required),
     dob: new FormControl('', Validators.required),
-    emailId: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+    emailId: new FormControl('', [Validators.required, Validators.pattern(this.EMAIL_REGEX)]),
     password: new FormControl('', Validators.required),
     subscribe: new FormControl(true)
   });
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router,
+    private dashboardService: DashboardService
   ) { }
 
   ngOnInit(): void {
   }
 
   submitForm() {
-    // TODO: API Intrgn
     console.warn(this.profileForm.value);
     const userInfo = this.profileForm.value;
     this.loginService.registerUser(userInfo).subscribe((response) => {
+      this.router.navigate(['../home']);
+      this.dashboardService.openLoginModal();
       console.log("registered", response);
+    }, (error) => {
+      // this.router.navigate(['../home']);
+      // this.dashboardService.openLoginModal();
+      console.log("registeration error");
     });
   }
 
