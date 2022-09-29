@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   brandImageUrl = AppConstant.brandImageUrl;
   menuItemLinks: IMenuItemLink[] = [];
   typeSelected: string;
+  loggedInUser={name:'Mayur'};
 
   constructor(
     private titleService: Title,
