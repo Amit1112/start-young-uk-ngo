@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReviewCommentComponent } from './review-comment/review-comment.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ManageChildrenComponent } from './manage-children/manage-children.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -19,7 +21,10 @@ import { ManageChildrenComponent } from './manage-children/manage-children.compo
   imports: [
     CommonModule,
     AdminRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ]
 })
 export class AdminModule { }

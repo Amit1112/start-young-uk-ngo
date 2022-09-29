@@ -3,6 +3,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { AppConstant } from './app.constant';
 import { DashboardService } from './services/dashboard.service';
 import { IMenuItemLink } from './types/app.interface';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,15 @@ export class AppComponent implements OnInit {
   aboutInfo: string = '';
   brandImageUrl = AppConstant.brandImageUrl;
   menuItemLinks: IMenuItemLink[] = [];
+  typeSelected: string;
 
   constructor(
     private titleService: Title,
     private metaTagService: Meta,
-    private dashboardService: DashboardService) { }
+    private dashboardService: DashboardService,
+    private spinnerService: NgxSpinnerService) {
+      this.typeSelected = 'ball-atom';
+    }
 
   ngOnInit() {
     this.titleService.setTitle("Start Young UK");
@@ -32,9 +37,6 @@ export class AppComponent implements OnInit {
     //   { name: 'author', content: 'Start Young UK' },
     // ]);
     this.menuItemLinks = this.dashboardService.getMenuItemLinks();
-    this.dashboardService.getAboutUsInfo().subscribe((data) => {
-      console.log(data, 'succss');
-    })
   }
 
   openLoginModal() {

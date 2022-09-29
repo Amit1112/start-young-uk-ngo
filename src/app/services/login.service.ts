@@ -1,19 +1,23 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AppConstant } from '../app.constant';
 import { LoginComponent } from '../login/login.component';
+import { IUserType } from '../types/app.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
+    private userInfoSubject = new BehaviorSubject({});
+    userInfoData$ = this.userInfoSubject.asObservable();
+
     constructor(
         private http: HttpClient) { }
 
-    getUserInfo(): Observable<any> {
+    fetchUserInfo(): Observable<any> {
         let headers = new HttpHeaders();
         const jwt = window.sessionStorage.getItem('jwt') || '';
         const headerToken = `Bearer ${jwt}`;
@@ -27,6 +31,10 @@ export class LoginService {
 
     registerUser(userInfo: any) {
         return this.http.post(AppConstant.apiEndPoinUrl + AppConstant.signUpUrl, userInfo);
+    }
+
+    updateUserInfo(userInfo: IUserType) {
+        this.userInfoSubject.next(userInfo);
     }
 
     logout() {

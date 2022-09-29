@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DashboardService } from '../services/dashboard.service';
 import { LoginService } from '../services/login.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { AppConstant } from '../app.constant';
 
 @Component({
   selector: 'app-registration',
@@ -23,8 +25,6 @@ export class RegistrationComponent implements OnInit {
     'Lincoln',
     'Worcester', 'York', 'Wells', 'Wakefield', 'Cambridge', 'Chester', 'Derby'];
 
-  EMAIL_REGEX = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
-
   profileForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit {
     city: new FormControl('', Validators.required),
     state: new FormControl('', Validators.required),
     dob: new FormControl('', Validators.required),
-    emailId: new FormControl('', [Validators.required, Validators.pattern(this.EMAIL_REGEX)]),
+    emailId: new FormControl('', [Validators.required, Validators.pattern(AppConstant.EMAIL_REGEX)]),
     password: new FormControl('', Validators.required),
     subscribe: new FormControl(true)
   });
@@ -41,7 +41,8 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private spinnerService: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -50,13 +51,15 @@ export class RegistrationComponent implements OnInit {
   submitForm() {
     console.warn(this.profileForm.value);
     const userInfo = this.profileForm.value;
+    this.spinnerService.show();
+
     this.loginService.registerUser(userInfo).subscribe((response) => {
+      this.spinnerService.hide();
       this.router.navigate(['../home']);
       this.dashboardService.openLoginModal();
       console.log("registered", response);
     }, (error) => {
-      // this.router.navigate(['../home']);
-      // this.dashboardService.openLoginModal();
+      this.spinnerService.hide();
       console.log("registeration error");
     });
   }

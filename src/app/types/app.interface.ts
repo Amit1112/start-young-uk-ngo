@@ -4,3 +4,8 @@ export interface IMenuItemLink {
     isDashBoard?: boolean;
     isModal?: boolean;
 }
+
+export interface IUserType {
+    name: string;
+    userType: string;
+}
