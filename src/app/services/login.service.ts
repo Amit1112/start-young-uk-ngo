@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { AppConstant } from '../app.constant';
 import { LoginComponent } from '../login/login.component';
 import { IUserType } from '../types/app.interface';
+import { DashboardService } from './dashboard.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class LoginService {
     userInfoData$ = this.userInfoSubject.asObservable();
 
     constructor(
-        private http: HttpClient) { }
+        private http: HttpClient,
+        private dashService: DashboardService) { }
 
     fetchUserInfo(): Observable<any> {
         let headers = new HttpHeaders();
@@ -46,5 +48,6 @@ export class LoginService {
             name: '',
             userType: ''
         });
+        this.dashService.updateMenuItemLinks();
     }
 }
