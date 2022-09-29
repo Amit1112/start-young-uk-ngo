@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { AppConstant } from './app.constant';
 import { DashboardService } from './services/dashboard.service';
-import { IMenuItemLink } from './types/app.interface';
+import { IMenuItemLink, IUserType } from './types/app.interface';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +17,17 @@ export class AppComponent implements OnInit {
   brandImageUrl = AppConstant.brandImageUrl;
   menuItemLinks: IMenuItemLink[] = [];
   typeSelected: string;
-  loggedInUser={name:'Mayur'};
+  loggedInUser = {
+    name: '',
+    userType: ''
+  };
   showChat = true;
 
   constructor(
     private titleService: Title,
     private metaTagService: Meta,
     private dashboardService: DashboardService,
-    private spinnerService: NgxSpinnerService) {
+    private loginService: LoginService) {
       this.typeSelected = 'ball-atom';
     }
 
@@ -38,7 +42,12 @@ export class AppComponent implements OnInit {
     //   { name: 'robots', content: 'index, follow' },
     //   { name: 'author', content: 'Start Young UK' },
     // ]);
-    this.menuItemLinks = this.dashboardService.getMenuItemLinks();
+    this.loginService.userInfoData$.subscribe((userInfo: IUserType) => {
+      this.loggedInUser = userInfo;
+    });
+    this.dashboardService.menuItemsData$.subscribe((menuItemLinks: any) => {
+      this.menuItemLinks = menuItemLinks;
+    });
   }
 
   openLoginModal() {
@@ -47,5 +56,9 @@ export class AppComponent implements OnInit {
 
   openChat() {
     this.showChat = !this.showChat;
+  }
+
+  logoutUser() {
+    this.loginService.logout();
   }
 }

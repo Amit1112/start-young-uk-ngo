@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginComponent } from '../login/login.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
-
-  readonly baseApiUrl = 'https://codefest-spring-boot-backend.azurewebsites.net';
 
   menuItemsLinks = [
     {
@@ -49,18 +47,21 @@ export class DashboardService {
     }
   ];
 
-  constructor(
-    private http: HttpClient,
-    private modalService: NgbModal) { }
+  private menuItemsSubject = new BehaviorSubject(this.menuItemsLinks);
+  menuItemsData$ = this.menuItemsSubject.asObservable();
 
-  getAboutUsInfo(): Observable<any> {
-    return this.http.get<any>(this.baseApiUrl + '/login');
-  }
+  constructor(
+    private modalService: NgbModal) {
+      this.updateMenuItemLinks();
+    }
 
   getMenuItemLinks() {
-    return this.menuItemsLinks;
+    return this.menuItemsData$;
   }
 
+  updateMenuItemLinks() {
+    return this.menuItemsSubject.next(this.menuItemsLinks);
+  }
   openLoginModal() {
     this.modalService.open(LoginComponent);
   }

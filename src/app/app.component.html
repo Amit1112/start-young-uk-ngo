@@ -13,16 +13,13 @@
               </li>
           </ul>
       </div>
-      <!-- <div class="d-flex justify-content-between pull-right">
-        <b>Hi {{loggedInUser.name}}</b>
-      </div> -->
-      <div class="btn-group">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Hi {{loggedInUser.name}}
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="abc">Logout</a>
-        </div>
+      <div class="dropdown" *ngIf="loggedInUser?.name">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Hi, {{loggedInUser.name}}
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="javascript:void(0)" (click)="logoutUser()">Logout</a></li>
+        </ul>
       </div>
   </div>
 </nav>

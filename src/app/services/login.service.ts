@@ -11,7 +11,10 @@ import { IUserType } from '../types/app.interface';
 })
 export class LoginService {
 
-    private userInfoSubject = new BehaviorSubject({});
+    private userInfoSubject = new BehaviorSubject({
+        name: '',
+        userType: ''
+    });
     userInfoData$ = this.userInfoSubject.asObservable();
 
     constructor(
@@ -39,5 +42,9 @@ export class LoginService {
 
     logout() {
         window.sessionStorage.removeItem('jwt');
+        this.updateUserInfo({
+            name: '',
+            userType: ''
+        });
     }
 }
