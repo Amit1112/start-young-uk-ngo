@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       window.sessionStorage.setItem("jwt", response.jwt);
       this.activeModal.close('Close click');
       this.loginService.fetchUserInfo().subscribe((response) => {
+        window.sessionStorage.setItem("userInfo", response);
         this.spinnerService.hide();
         this.loginService.updateUserInfo(response);
         console.log("User Info", response);

@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     name: '',
     userType: ''
   };
-  showChat = true;
+  showChat = false;
 
   constructor(
     private titleService: Title,
@@ -44,6 +44,9 @@ export class AppComponent implements OnInit {
     // ]);
     this.loginService.userInfoData$.subscribe((userInfo: IUserType) => {
       this.loggedInUser = userInfo;
+      if(this.loggedInUser.userType === AppConstant.ADMIN_ROLE) {
+        this.addMenuLinksForAdmin();
+      }
     });
     this.dashboardService.menuItemsData$.subscribe((menuItemLinks: any) => {
       this.menuItemLinks = menuItemLinks;
@@ -60,5 +63,16 @@ export class AppComponent implements OnInit {
 
   logoutUser() {
     this.loginService.logout();
+  }
+
+  addMenuLinksForAdmin() {
+    this.menuItemLinks = [
+      ...this.menuItemLinks,
+      {
+        name: 'Admin',
+        id: 'admin',
+        isDashBoard: false
+      }
+    ];
   }
 }

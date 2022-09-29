@@ -4,5 +4,6 @@ export class AppConstant {
     static readonly signUpUrl = 'api/signUp';
     static readonly loginUrl = 'api/login';
     static readonly getUserUrl = 'api/user';
-    static readonly EMAIL_REGEX = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+    static readonly EMAIL_REGEX = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+    static readonly ADMIN_ROLE = 'Admin';
 }

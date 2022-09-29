@@ -39,11 +39,6 @@ export class DashboardService {
       name: 'Sign Up',
       id: 'signUp',
       isDashBoard: false
-    },
-    {
-      name: 'Admin',
-      id: 'admin',
-      isDashBoard: false
     }
   ];
 
