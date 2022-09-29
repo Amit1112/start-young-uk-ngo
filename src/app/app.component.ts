@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   menuItemLinks: IMenuItemLink[] = [];
   typeSelected: string;
   loggedInUser={name:'Mayur'};
+  showChat = true;
 
   constructor(
     private titleService: Title,
@@ -42,5 +43,9 @@ export class AppComponent implements OnInit {
 
   openLoginModal() {
     this.dashboardService.openLoginModal();
+  }
+
+  openChat() {
+    this.showChat = !this.showChat;
   }
 }
