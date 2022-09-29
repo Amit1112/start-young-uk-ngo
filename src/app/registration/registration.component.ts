@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-registration',
@@ -33,7 +34,9 @@ export class RegistrationComponent implements OnInit {
     subscribe: new FormControl(true)
   });
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -41,6 +44,10 @@ export class RegistrationComponent implements OnInit {
   submitForm() {
     // TODO: API Intrgn
     console.warn(this.profileForm.value);
+    const userInfo = this.profileForm.value;
+    this.loginService.registerUser(userInfo).subscribe((response) => {
+      console.log("registered", response);
+    });
   }
 
   resetForm() {
