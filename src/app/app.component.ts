@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   brandImageUrl = AppConstant.brandImageUrl;
   menuItemLinks: IMenuItemLink[] = [];
   typeSelected: string;
+  showChat = true;
 
   constructor(
     private titleService: Title,
@@ -41,5 +42,9 @@ export class AppComponent implements OnInit {
 
   openLoginModal() {
     this.dashboardService.openLoginModal();
+  }
+
+  openChat() {
+    this.showChat = !this.showChat;
   }
 }

@@ -16,5 +16,6 @@
   </div>
 </nav>
 <router-outlet></router-outlet>
-<!-- <ngx-spinner size="medium" [type]="typeSelected"></ngx-spinner> -->
+<button class="open-chat-button" (click)="openChat()" [ngClass]="{moveChat: showChat}"><i class="fa fa-comments-o" aria-hidden="true"></i>Chat</button>
 <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="large" color="#fff" type="ball-scale-multiple" [fullScreen]="true"></ngx-spinner>
+<iframe [attr.height]="showChat ? '600px' : '0px'" [attr.width]="showChat ? '400px' : '0px'" [ngClass]="{'iframe-show': true}" src="https://webchat.botframework.com/embed/sprayjamnynjascl-bot?s=T4XNR28cWEw.Q2mqA32A8OtFHw0se6AbPW62osRSd1oklqHv52LJmaU" style="height: 502px; max-height: 502px;"></iframe>
