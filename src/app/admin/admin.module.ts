@@ -9,6 +9,7 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ManageChildrenComponent } from './manage-children/manage-children.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -23,8 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }
